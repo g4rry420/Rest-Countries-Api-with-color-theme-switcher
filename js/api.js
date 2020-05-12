@@ -123,48 +123,9 @@ const reg = async (country) => {
     
 }
 
-// country capital
-const cap = async (country) => {
+const showMore = async (country) => {
     
-    const capital = country.capital;
-    const capi = new Array();
-    capi.push(capital);
-    capi.forEach(capital => {
-
-    var h4 = document.createElement( "h4");
-    h4.textContent = `Capital: `;
-    box.appendChild (h4);
-
-    var span = document.createElement("span");
-    span.textContent = `${capital}`;
-    h4.appendChild(span);
-
-    var spanLink = document.createElement("span");
-    spanLink.setAttribute("id","capital-mar");
-    box.appendChild(spanLink);
-
-    anchor = document.createElement("a");   ///Global 
-    const anchorTextNode = document.createTextNode("Show Details ");
-    anchor.appendChild(anchorTextNode);
-    const i = document.createElement("i");
-    i.setAttribute("class","fas fa-arrow-right");
-    anchor.appendChild(i);
-    spanLink.appendChild(anchor);
-    })
-
-
-    //Hover effect for Show Details
-    // box.addEventListener("mouseover",(e) =>{
-    //     e.stopPropagation();
-    //     anchor.style.display = "inline-block";
-    //     console.log(anchor.style);
-    // })
-
-     anchor.addEventListener("click",()=>{
-       
-
-        
-        main.style.display = "none";
+            main.style.display = "none";
         back.style.display = "block";
         secondPageGrid.style.display = "grid"
 
@@ -292,14 +253,74 @@ const cap = async (country) => {
                     
                     const borderCountry = () => {
                         borders.addEventListener("click",()=>{
-                            div.remove();
-                            flag.remove();
+                            // alert("...");
+                            console.log("Looking for: " + borders.textContent);
+                            all()
+                                 .then((data) => {
+                                    //  countryDetails(data);
+                                    data.forEach(country => {
+                                    if(country.name == borders.textContent) {
+                                        console.log(country);
+
+                                                        div.remove();
+                                                        flag.remove();
+
+                                    showMore(country);
+                                    }
+                                    })
+                                    
+                                 })
                         })
                     }
                     borderCountry();
                 })
                 .catch(err => console.log(err));    
             }
+
+
+
+}
+// country capital
+const cap = async (country) => {
+    
+    const capital = country.capital;
+    const capi = new Array();
+    capi.push(capital);
+    capi.forEach(capital => {
+
+    var h4 = document.createElement( "h4");
+    h4.textContent = `Capital: `;
+    box.appendChild (h4);
+
+    var span = document.createElement("span");
+    span.textContent = `${capital}`;
+    h4.appendChild(span);
+
+    var spanLink = document.createElement("span");
+    spanLink.setAttribute("id","capital-mar");
+    box.appendChild(spanLink);
+
+    anchor = document.createElement("a");   ///Global 
+    const anchorTextNode = document.createTextNode("Show Details ");
+    anchor.appendChild(anchorTextNode);
+    const i = document.createElement("i");
+    i.setAttribute("class","fas fa-arrow-right");
+    anchor.appendChild(i);
+    spanLink.appendChild(anchor);
+    })
+
+
+    //Hover effect for Show Details
+    // box.addEventListener("mouseover",(e) =>{
+    //     e.stopPropagation();
+    //     anchor.style.display = "inline-block";
+    //     console.log(anchor.style);
+    // })
+
+     anchor.addEventListener("click",()=>{
+       
+        showMore(country);
+
         
     })
 }
