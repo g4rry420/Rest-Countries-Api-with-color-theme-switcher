@@ -123,62 +123,123 @@ const reg = async (country) => {
     
 }
 
-const showMore = async (country) => {
+// country capital
+const cap = async (country) => {
     
-            main.style.display = "none";
-        back.style.display = "block";
-        secondPageGrid.style.display = "grid"
+    const capital = country.capital;
+    const capi = new Array();
+    capi.push(capital);
+    capi.forEach(capital => {
 
+    var h4 = document.createElement( "h4");
+    h4.setAttribute("id","margin")
+    h4.textContent = `Capital: `;
+    box.appendChild (h4);
+
+    var span = document.createElement("span");
+    span.textContent = `${capital}`;
+    h4.appendChild(span);
+
+    var spanLink = document.createElement("span");
+    spanLink.setAttribute("id","capital-mar");
+    box.appendChild(spanLink);
+
+    anchor = document.createElement("a");   ///Global 
+    const anchorTextNode = document.createTextNode("Show Details ");
+    anchor.appendChild(anchorTextNode);
+    const i = document.createElement("i");
+    i.setAttribute("class","fas fa-arrow-right");
+    anchor.appendChild(i);
+    spanLink.appendChild(anchor);
+
+    const a = new Array();
+    a.push(anchor);
+
+    
+    // Hover effect for Show Details
+    box.addEventListener("mouseover",(e) =>{
+        e.stopPropagation();
+        a[0].style.display = "block"
+    })
+
+     box.addEventListener("mouseout",(e) =>{
+        e.stopPropagation();
+        a[0].style.display = "none";
+    })
+
+    })
+    
+   
+   
+
+
+    
+
+     box.addEventListener("click",()=>{
+       
+        showMore(country);
         
-        // div before inside grid
-        div = document.createElement("div");  //GLOBAL
-        secondPageGrid.appendChild(div);
+    
+        });
+      
+    
+}
 
-        // inside div for grid
-        const insideGrid = document.createElement("div");
-        insideGrid.setAttribute("class","insideGrid");
-        div.appendChild(insideGrid);
-        
+/// for 2nd page
+const showMore = async (country) =>{
 
-        //CountryName
-        const h2 = document.createElement("h2");
-        h2.textContent = `${country.name}`;
-        insideGrid.appendChild(h2);
+    main.style.display = "none";
+    back.style.display = "block";
+    secondPageGrid.style.display = "grid"
 
-        //Country Native Name
-        const h4NativeName = document.createElement("h4");
-        h4NativeName.textContent = "Native Name: ";
-        insideGrid.appendChild(h4NativeName);
-        const nativeNameSpan = document.createElement("span");
-        nativeNameSpan.textContent = `${country.nativeName}`;
-        h4NativeName.appendChild(nativeNameSpan);
+    // div before inside grid
+    div = document.createElement("div");  //GLOBAL
+    secondPageGrid.appendChild(div);
 
-        //Populationn
-        const popu = document.createElement("h4");
-        popu.textContent = "Population: ";
-        insideGrid.appendChild(popu);
-        var spanO = `${country.population}`
-        spanO = Number(spanO);
-        spanO = spanO.toLocaleString();
-        const popuSpan = document.createElement("span");
-        popuSpan.textContent = `${spanO}`;
-        popu.appendChild(popuSpan);
+    // inside div for grid
+    const insideGrid = document.createElement("div");
+    insideGrid.setAttribute("class","insideGrid");
+    div.appendChild(insideGrid);
 
-        //region
-        const region = document.createElement("h4");
-        region.textContent = "Region: ";
-        insideGrid.appendChild(region);
-        const regionSpan = document.createElement("span");
-        regionSpan.textContent = `${country.region}`;
-        region.appendChild(regionSpan);
+    //CountryName
+    const h2 = document.createElement("h2");
+    h2.textContent = `${country.name}`;
+    insideGrid.appendChild(h2);
 
-        // Sub Region
-        const subRegion = document.createElement("h4");
-        subRegion.textContent = "Sub Region: ";
-        insideGrid.appendChild(subRegion);
-        const subRegionSpan = document.createElement("span");
-        subRegionSpan.textContent = `${country.subregion}`;
-        subRegion.appendChild(subRegionSpan);
+    //Country Native Name
+    const h4NativeName = document.createElement("h4");
+    h4NativeName.textContent = "Native Name: ";
+    insideGrid.appendChild(h4NativeName);
+    const nativeNameSpan = document.createElement("span");
+    nativeNameSpan.textContent = `${country.nativeName}`;
+    h4NativeName.appendChild(nativeNameSpan);
+
+     //Populationn
+     const popu = document.createElement("h4");
+     popu.textContent = "Population: ";
+     insideGrid.appendChild(popu);
+     var spanO = `${country.population}`
+     spanO = Number(spanO);
+     spanO = spanO.toLocaleString();
+     const popuSpan = document.createElement("span");
+     popuSpan.textContent = `${spanO}`;
+     popu.appendChild(popuSpan);
+
+      //region
+      const region = document.createElement("h4");
+      region.textContent = "Region: ";
+      insideGrid.appendChild(region);
+      const regionSpan = document.createElement("span");
+      regionSpan.textContent = `${country.region}`;
+      region.appendChild(regionSpan);
+
+       // Sub Region
+       const subRegion = document.createElement("h4");
+       subRegion.textContent = "Sub Region: ";
+       insideGrid.appendChild(subRegion);
+       const subRegionSpan = document.createElement("span");
+       subRegionSpan.textContent = `${country.subregion}`;
+       subRegion.appendChild(subRegionSpan);
 
         // Capital
         const capital = document.createElement("h4");
@@ -208,7 +269,6 @@ const showMore = async (country) => {
         const language = document.createElement("h4");
         language.textContent = "Languages: ";
         insideGrid.appendChild(language);
-        
 
         country.languages.forEach(lang =>{
             var languageSpan = document.createElement("span");
@@ -217,7 +277,6 @@ const showMore = async (country) => {
             if (country.languages.length < 3){
                 languageSpan.textContent += `, `;
             }
-            
         })
 
         //Flag
@@ -227,7 +286,6 @@ const showMore = async (country) => {
         secondPageGrid.insertBefore(flag,div);
 
         // BACK TO HOME
-
         back.addEventListener("click",()=>{
             main.style.display = "block";
             div.remove();
@@ -239,92 +297,40 @@ const showMore = async (country) => {
         const h3 = document.createElement("h3");
         h3.textContent = "Border Countries: ";
         div.appendChild(h3);
-        
         if(country.borders.length === 0){
             h3.style.display = "none";
         }
-        for (let index = country.borders.length; index--;) {
+
+        for(let index = country.borders.length; index--;){
             const code = country.borders[index];
             countryCode(code)
                 .then(data => {
                     let borders = document.createElement("button");
                     borders.textContent = `${data.name}`;
                     h3.appendChild(borders);
-                    
-                    const borderCountry = () => {
-                        borders.addEventListener("click",()=>{
-                            // alert("...");
+
+                    const borderCountry = () =>{
+                        borders.addEventListener("click",() =>{
                             console.log("Looking for: " + borders.textContent);
-                            all()
-                                 .then((data) => {
-                                    //  countryDetails(data);
-                                    data.forEach(country => {
-                                    if(country.name == borders.textContent) {
+
+                            all().then(data =>{
+                                data.forEach(country =>{
+                                    if(country.name == borders.textContent){
                                         console.log(country);
 
-                                                        div.remove();
-                                                        flag.remove();
+                                        div.remove();
+                                        flag.remove();
 
-                                    showMore(country);
+                                        showMore(country);
                                     }
-                                    })
-                                    
-                                 })
+                                })
+                            }).catch(error => console.log(error))
                         })
                     }
                     borderCountry();
-                })
-                .catch(err => console.log(err));    
-            }
-
-
-
+                }).catch(err => console.log(err));
+        }
 }
-// country capital
-const cap = async (country) => {
-    
-    const capital = country.capital;
-    const capi = new Array();
-    capi.push(capital);
-    capi.forEach(capital => {
-
-    var h4 = document.createElement( "h4");
-    h4.textContent = `Capital: `;
-    box.appendChild (h4);
-
-    var span = document.createElement("span");
-    span.textContent = `${capital}`;
-    h4.appendChild(span);
-
-    var spanLink = document.createElement("span");
-    spanLink.setAttribute("id","capital-mar");
-    box.appendChild(spanLink);
-
-    anchor = document.createElement("a");   ///Global 
-    const anchorTextNode = document.createTextNode("Show Details ");
-    anchor.appendChild(anchorTextNode);
-    const i = document.createElement("i");
-    i.setAttribute("class","fas fa-arrow-right");
-    anchor.appendChild(i);
-    spanLink.appendChild(anchor);
-    })
-
-
-    //Hover effect for Show Details
-    // box.addEventListener("mouseover",(e) =>{
-    //     e.stopPropagation();
-    //     anchor.style.display = "inline-block";
-    //     console.log(anchor.style);
-    // })
-
-     anchor.addEventListener("click",()=>{
-       
-        showMore(country);
-
-        
-    })
-}
-
 
 /// Searching Countries
 const searchC = ()=>{

@@ -175,6 +175,7 @@ main input:focus {
   border-radius: 5px;
   -webkit-box-shadow: 1px 2px 14px #202020;
           box-shadow: 1px 2px 14px #202020;
+  cursor: pointer;
 }
 
 .grid .box h2 {
@@ -189,17 +190,20 @@ main input:focus {
   font-weight: initial;
 }
 
+.grid #margin {
+  margin-bottom: 16%;
+}
+
 .grid #capital-mar {
   display: block;
 }
 
 .grid #capital-mar a {
-  display: inline-block;
+  display: none;
   text-decoration: none;
-  margin-top: 19%;
-  margin-left: 54%;
   color: #111517;
   cursor: pointer;
+  margin-left: 54%;
 }
 
 .grid #capital-mar a:hover {
@@ -310,7 +314,7 @@ select:focus {
   padding: 1% 3%;
 }
 
-#secondPageGrid, #thirdPage {
+#secondPageGrid {
   display: none;
   width: 88%;
   margin: 0 auto;
@@ -320,17 +324,17 @@ select:focus {
   margin-top: 3%;
 }
 
-#secondPageGrid img, #thirdPage img {
+#secondPageGrid img {
   height: 252px;
   width: 100%;
 }
 
-#secondPageGrid h3, #thirdPage h3 {
+#secondPageGrid h3 {
   margin-top: 4%;
   font-size: 1.4em;
 }
 
-#secondPageGrid h3 button, #thirdPage h3 button {
+#secondPageGrid h3 button {
   border: 0;
   background: white;
   font-size: 15px;
@@ -369,7 +373,7 @@ select:focus {
 }
 
 @media only screen and (max-width: 750px) {
-  #secondPageGrid, #thirdPage {
+  #secondPageGrid {
     -ms-grid-columns: 100%;
         grid-template-columns: 100%;
     grid-column-gap: 0;
