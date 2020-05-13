@@ -166,10 +166,10 @@ main{
             }
         }
     }
-    #margin{
+    .margin{
         margin-bottom: 16%;
     }
-    #capital-mar{
+    .capital-mar{
         display: block;
         a{
             display: none;
@@ -200,9 +200,11 @@ select{
     box-shadow: 0px 0px 5px rgb(0, 0, 0.5);
     font-size: 16px;
     font-family: 'Nunito Sans', sans-serif;
+    cursor: pointer;
 }
 select option{
     font-family: 'Nunito Sans', sans-serif;
+    cursor: pointer;
 }
 select:focus{
     padding: 1% 2% 1% 2%;

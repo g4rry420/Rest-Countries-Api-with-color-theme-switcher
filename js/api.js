@@ -132,7 +132,7 @@ const cap = async (country) => {
     capi.forEach(capital => {
 
     var h4 = document.createElement( "h4");
-    h4.setAttribute("id","margin")
+    h4.setAttribute("class","margin")
     h4.textContent = `Capital: `;
     box.appendChild (h4);
 
@@ -141,7 +141,7 @@ const cap = async (country) => {
     h4.appendChild(span);
 
     var spanLink = document.createElement("span");
-    spanLink.setAttribute("id","capital-mar");
+    spanLink.setAttribute("class","capital-mar");
     box.appendChild(spanLink);
 
     anchor = document.createElement("a");   ///Global 
@@ -179,7 +179,7 @@ const cap = async (country) => {
        
         showMore(country);
         
-    
+        
         });
       
     
@@ -187,6 +187,8 @@ const cap = async (country) => {
 
 /// for 2nd page
 const showMore = async (country) =>{
+
+    console.log(country)
 
     main.style.display = "none";
     back.style.display = "block";

@@ -190,15 +190,15 @@ main input:focus {
   font-weight: initial;
 }
 
-.grid #margin {
+.grid .margin {
   margin-bottom: 16%;
 }
 
-.grid #capital-mar {
+.grid .capital-mar {
   display: block;
 }
 
-.grid #capital-mar a {
+.grid .capital-mar a {
   display: none;
   text-decoration: none;
   color: #111517;
@@ -206,7 +206,7 @@ main input:focus {
   margin-left: 54%;
 }
 
-.grid #capital-mar a:hover {
+.grid .capital-mar a:hover {
   scale: 1.2;
 }
 
@@ -231,10 +231,12 @@ select {
           box-shadow: 0px 0px 5px #000001;
   font-size: 16px;
   font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
 }
 
 select option {
   font-family: 'Nunito Sans', sans-serif;
+  cursor: pointer;
 }
 
 select:focus {
