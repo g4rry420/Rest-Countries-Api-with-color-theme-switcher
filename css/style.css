@@ -39,7 +39,7 @@ html[data-theme="dark"] body .fa-search {
   display: block;
 }
 
-html[data-theme="dark"] body #capital-mar a {
+html[data-theme="dark"] body .capital-mar a {
   color: white;
 }
 

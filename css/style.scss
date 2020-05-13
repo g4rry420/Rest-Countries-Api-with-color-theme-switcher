@@ -42,7 +42,7 @@ html[data-theme = "dark"]{
         .fa-search{
             display: block;
         }
-        #capital-mar{
+        .capital-mar{
             a{
                 color: map-get($map: $colors, $key: wwhite);
             }
